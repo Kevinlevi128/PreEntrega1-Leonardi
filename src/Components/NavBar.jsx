@@ -1,13 +1,13 @@
 import React, {useState} from "react";
 import styled from 'styled-components';
 import BurguerButton from "./BurguerButton";
-import Carrito from "./Carrito";
-
+import ItemListContainer from "./ItemsListContainer";
+import CartWidget from "./CartWidget";
 function Navbar() {
     const [clicked, setClicked] = useState(false)
     console.log(clicked)
     const handleClick = () => {
-        //cuando esta true lo pasa a flase y viceversa
+        //cuando esta true lo pasa a false y viceversa
         setClicked(!clicked)
     }
     return(
@@ -20,10 +20,17 @@ function Navbar() {
             <a onClick={handleClick} href="#h">Sobre Nosotros</a>
             <a onClick={handleClick} href="#h">Contacto</a>
         </div>
+        <ItemListContainer
+            itemUno = "1"
+            itemDos = "2"
+            itemTres = "3"
+            itemCuatro = "4"
+        />
         <div className="burguer">
         <BurguerButton clicked = {clicked} handleClick ={handleClick}/>
         </div>
         <BgDiv className={`initial ${clicked ? "active" : ""}`}></BgDiv>
+        <CartWidget/>
         </Navconteiner>
         
         </>  
@@ -42,7 +49,7 @@ const Navconteiner = styled.nav`
         }
     }
     padding: .3rem;
-    background-color: gray;
+    background-color: #200050;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -92,6 +99,8 @@ const Navconteiner = styled.nav`
             color: white;
         }
     }
+   
+
 
     .burguer{
         @media(min-width: 768px){
